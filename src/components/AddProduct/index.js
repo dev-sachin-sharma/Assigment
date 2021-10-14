@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import { addProduct, editProduct } from "../../redux/product/actions";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4, validate } from "uuid";
 import "./style.scss";
 
 const AddProduct = ({ addProduct, products, singleProduct, routeCheck, editProduct }) => {
@@ -36,6 +36,8 @@ const AddProduct = ({ addProduct, products, singleProduct, routeCheck, editProdu
   const handleSubmit = (e) => {
     e && e.preventDefault();
 
+     //validating empty if fields are empty
+
     if (data.name === undefined || data.name === "") {
       setIsError({ check: true, message: "Product Name is empty." });
     } else if (data.launchedAt === undefined || data.launchedAt === "") {
@@ -45,24 +47,32 @@ const AddProduct = ({ addProduct, products, singleProduct, routeCheck, editProdu
     } else if (rank === undefined || rank === 0) {
       setIsError({ check: true, message: "Popularity is 0." });
     } else {
+
+      // else submitting data to redux
       submittion();
+
+      // after submittion redirect to home
+
       history.push("/");
     }
   };
 
   const submittion = () => {
-    // let newProducts = [
-    //   ...products,
-    //   { ...data, popularity: rank, id: uuidv4() },
-    // ];
     if (routeCheck === "add") {
       addProduct({ ...data, popularity: rank, id: uuidv4() });
     } else {
-      
+    
       editProduct({...data, popularity: rank });
     }
   };
 
+    const handleChange=(e)=>{
+      const {name,value}= e.target;
+      setData({
+        ...data,
+        [name]:value
+      })
+    }
 
   return (
     <div className="add-product">
@@ -74,7 +84,8 @@ const AddProduct = ({ addProduct, products, singleProduct, routeCheck, editProdu
               type="text"
               placeholder="Product Name*"
               value={data.name}
-              onChange={(e) => setData({ ...data, name: e.target.value })}
+              name="name"
+              onChange={handleChange}
             />
           </div>
           <div className="formRow">
@@ -82,7 +93,8 @@ const AddProduct = ({ addProduct, products, singleProduct, routeCheck, editProdu
               type="date"
               placeholder="Product Launched At*"
               value={data.launchedAt}
-              onChange={(e) => setData({ ...data, launchedAt: e.target.value })}
+              name="launchedAt"
+              onChange={handleChange}
             />
           </div>
           <div className="formRow">
@@ -90,7 +102,8 @@ const AddProduct = ({ addProduct, products, singleProduct, routeCheck, editProdu
               type="text"
               placeholder="Launch Site*"
               value={data.launchSite}
-              onChange={(e) => setData({ ...data, launchSite: e.target.value })}
+              name="launchSite"
+              onChange={handleChange}
             />
           </div>
           <div className="formRow">
