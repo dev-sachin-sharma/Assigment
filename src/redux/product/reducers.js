@@ -7,25 +7,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  products: [
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""},
-    { id: "", name: "", launchedAt: "", launchSite: "", popularity: ""}
-  ],
+  products: [],
   singleProduct: {},
   formRoute: "",
   isAuth: false
