@@ -13,6 +13,9 @@ function App() {
         <Route exact path="/">
           <Homepage />
         </Route>
+        {/* 
+          preventing user from routing manually from url
+        */}
         {isAuthentic && (
           <Route exact path="/add">
             <AddProduct />
