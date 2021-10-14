@@ -58,14 +58,17 @@ const AddProduct = ({ addProduct, products, singleProduct, routeCheck, editProdu
   };
 
   const submittion = () => {
+      // if routecheck global state(redux) variable is add then fresh from
     if (routeCheck === "add") {
       addProduct({ ...data, popularity: rank, id: uuidv4() });
-    } else {
-    
+    }
+       // else  edit form to update data
+    else {
       editProduct({...data, popularity: rank });
     }
   };
 
+      // inputbox update function 
     const handleChange=(e)=>{
       const {name,value}= e.target;
       setData({

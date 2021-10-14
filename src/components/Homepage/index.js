@@ -35,7 +35,6 @@ const Homepage = ({ products, singleProduct, deleteProduct }) => {
   };
 
   const handleDel = (item) => {
-    // const dummy = products.filter((product) => product.id !== item.id);
     deleteProduct(item.id);
     setShowModal({ bool: false, data: {} });
   };
@@ -44,6 +43,8 @@ const Homepage = ({ products, singleProduct, deleteProduct }) => {
   };
 
   const handleSort = (type) => {
+
+    // type is a string to check which type of sorting to perfrom
     switch (type) {
       case "name":
         const sortName = prod.sort((a, b) =>
