@@ -81,13 +81,15 @@ const Homepage = ({ products, singleProduct, deleteProduct }) => {
         <button onClick={() => handleAdd()}>Add Product</button>
       </div>
 
-      <div className="sorting-container">
+      {prod && prod.length > 0 &&
+        <div className="sorting-container">
         <button className="label">Sort By:</button>
         <button onClick={() => handleSort("name")}>Name</button>
         <button onClick={() => handleSort("launchedAt")}>Launched At</button>
         <button onClick={() => handleSort("launchSite")}>Launch Site</button>
         <button onClick={() => handleSort("popularity")}>Popularity</button>
       </div>
+      }
 
       <div className="table-container">
         <table>
